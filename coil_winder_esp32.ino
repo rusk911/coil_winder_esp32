@@ -198,8 +198,7 @@ void setup() {
 
 void loop() {
   if(scale.is_ready()) {
-    //mySensor.reading(scale.ge);
-    delay(50);
+    mySensor.reading(scale.get_units());
   }
   if(is_main_screen) {
     //printWireTension();
@@ -406,8 +405,8 @@ void printWireTension() {
   tft.setTextSize(2);
   tft.setCursor(200, 355);
   tft.setTextColor(WHITE, BLACK);
-  //tft.print(int(mySensor.getAvg()));
-  //tft.println("    ");
+  tft.print(int(mySensor.getAvg()));
+  tft.println("   ");
 }
 
 void step() {
