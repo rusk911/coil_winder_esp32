@@ -7,12 +7,14 @@ MCUFRIEND_kbv tft;
 #define MINPRESSURE 200
 #define MAXPRESSURE 1000
 
+// load cell amplifier
 #include <HX711.h>
 HX711 scale;
 
 #define LOADCELL_DOUT_PIN  34
 #define LOADCELL_SCK_PIN  18
 
+// streaming load cell readings to get smoother results
 #include <movingAvg.h>
 movingAvg mySensor(5);
 
@@ -158,6 +160,10 @@ void setup() {
   // serial. remove after complete debugging
   Serial.begin(115200);
   mySensor.begin();
+  
+  scale.begin(LOADCELL_DOUT_PIN, LOADCELL_SCK_PIN);
+  scale.set_scale(7114.7368421);
+  scale.tare(); //Reset the scale to 0
 
   recalculateIt();
   // pins setup
@@ -182,6 +188,8 @@ void setup() {
   TFT_BEGIN();
   tft.setRotation(0);
 
+  delay(2000);
+
   // draw splash screen for setup
   drawSplash();
 
@@ -190,56 +198,53 @@ void setup() {
 
   // home cycle for stepper2
   home();
-  
-  scale.begin(LOADCELL_DOUT_PIN, LOADCELL_SCK_PIN);
-  scale.set_scale(7114.7368421);
   scale.tare(); //Reset the scale to 0
 }
 
 void loop() {
-  if(scale.is_ready()) {
-    mySensor.reading(scale.get_units());
-  }
   if(is_main_screen) {
-    //printWireTension();
 
     if(steppersMoving) {
       drawCounter(revolutions);
+      if(scale.is_ready()) {
+        mySensor.reading(scale.get_units());
+      }
+      printWireTension();
+    } else {
+      // read touch screen
+      if(Touch_getXY()) {
+        if(pixel_x > 210 && pixel_x < 310) {
+          if(pixel_y > 61 && pixel_y < 96) {
+            coilWidth_btn.drawButton(true);
+            enterNewValue(0);
+          }
+          if(pixel_y > 106 && pixel_y < 141) {
+            coilOffset_btn.drawButton(true);
+            enterNewValue(1);
+          }
+          if(pixel_y > 151 && pixel_y < 186) {
+            wireGauge_btn.drawButton(true);
+            enterNewValue(2);
+          }
+          if(pixel_y > 196 && pixel_y < 231) {
+            revolutions_btn.drawButton(true);
+            enterNewValue(3);
+          }
+          if(pixel_y > 241 && pixel_y < 276) {
+            speed_btn.drawButton(true);
+            enterNewValue(4);
+          }
+          if(pixel_y > 286 && pixel_y < 321) {
+            spacing_btn.drawButton(true);
+            enterNewValue(5);
+          }
+        }
+      }           
     }
 
     if(redraw) {//just stopped, redraw counter last time
       drawCounter(totalRevolutions);
       redraw = 0;
-    }
-    
-    // read touch screen
-    if(Touch_getXY()) {
-      if(pixel_x > 210 && pixel_x < 310) {
-        if(pixel_y > 61 && pixel_y < 96) {
-          coilWidth_btn.drawButton(true);
-          enterNewValue(0);
-        }
-        if(pixel_y > 106 && pixel_y < 141) {
-          coilOffset_btn.drawButton(true);
-          enterNewValue(1);
-        }
-        if(pixel_y > 151 && pixel_y < 186) {
-          wireGauge_btn.drawButton(true);
-          enterNewValue(2);
-        }
-        if(pixel_y > 196 && pixel_y < 231) {
-          revolutions_btn.drawButton(true);
-          enterNewValue(3);
-        }
-        if(pixel_y > 241 && pixel_y < 276) {
-          speed_btn.drawButton(true);
-          enterNewValue(4);
-        }
-        if(pixel_y > 286 && pixel_y < 321) {
-          spacing_btn.drawButton(true);
-          enterNewValue(5);
-        }
-      }
     }
   }
 }
