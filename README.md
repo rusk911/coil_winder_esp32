@@ -2,7 +2,7 @@
 Guitar pickups winder
 
 Components:
-1. ESP32-DevKitC 38pin development board
+1. ESP32-DevKitC 38pin development board  
 ![ESP32-DevKitC 38pin development board](https://github.com/rusk911/coil_winder_esp32/blob/main/images/esp32.jpg?raw=true)
 2. TFT touch display ILI9488 with Arduino UNO compatibile direct mount header for setting coil parameters and speed
 3. Bipolar stepper motor for main motor strong enough for rotating a coil. (I used 23HS16-0884S)
