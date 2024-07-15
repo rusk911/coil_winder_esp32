@@ -8,7 +8,8 @@ Components:
 ![TFT touch display ILI9488](https://github.com/rusk911/coil_winder_esp32/blob/main/images/3-5--320x480-tft-displej-ili9488--shield-arduino-uno.jpg?raw=true)
 3. Bipolar stepper motor for main motor strong enough for rotating a coil. (I used 23HS16-0884S)  
 ![23HS16-0884S](https://github.com/rusk911/coil_winder_esp32/blob/main/images/23HS16-0884S.jpg?raw=true)
-4. Stepper motor driver able to power your motor. (I used DM320T)
+4. Stepper motor driver able to power your motor. (I used DM320T)  
+![DM320T](https://github.com/rusk911/coil_winder_esp32/blob/main/images/dm320t.jpg?raw=true)
 5. Any CD/DVD drive for parts. I used mini stepper with linear screw from some DVD. It has usually about 0.1A/phase and 18 degrees full step and 3mm per revolution screw.
 6. Stepper motor driver for mini stepper, for example A4988. (I used tb6600)
 7. A button for start/stop winding.
