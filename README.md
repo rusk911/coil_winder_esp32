@@ -19,6 +19,11 @@ Components:
 9. Power supply for main motor 24-32V
 9. Wires, screws, some materials for assembly, hands.
 
+Optional:
+Load cell up to 100 gramms with HX711 module.  
+![alt text](images/Load-Cell-HX711.jpg)
+
+
 Instructions:
 
 Install Arduino IDE. Inside Arduino IDE install libraries Adafruit_GFX, MCUFRIEND_kbv and TouchScreen. Go to menu File -> Examples -> MCUFRIEND_kbv -> TouchScreen_Calibr_native. Connect your Arduino with attached display to USB port and upload the sketch. Switch Arduino IDE to serial monitor (Ctrl+Shift+M) and calibrate your TouchScreen touching "+" symbols. After that copy suggested lines from serial monitor and replace lines 10 and 11 in coil_winder.ino. This is the only adjustments you need to make in the code as it depends on TouchScreen parameters, which may vary between samples.
