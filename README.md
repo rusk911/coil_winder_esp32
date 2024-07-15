@@ -10,8 +10,10 @@ Components:
 ![23HS16-0884S](https://github.com/rusk911/coil_winder_esp32/blob/main/images/23HS16-0884S.jpg?raw=true)
 4. Stepper motor driver able to power your motor. (I used DM320T)  
 ![DM320T](https://github.com/rusk911/coil_winder_esp32/blob/main/images/dm320t.jpg?raw=true)
-5. Any CD/DVD drive for parts. I used mini stepper with linear screw from some DVD. It has usually about 0.1A/phase and 18 degrees full step and 3mm per revolution screw.
-6. Stepper motor driver for mini stepper, for example A4988. (I used tb6600)
+5. Any CD/DVD drive for parts. I used mini stepper with linear screw from some DVD. It has usually about 0.1A/phase and 18 degrees full step and 3mm per revolution screw.  
+![DVD](https://github.com/rusk911/coil_winder_esp32/blob/main/images/cd-dvd-rom-mekanik.jpg?raw=true)
+6. Stepper motor driver for mini stepper, for example A4988. (I used tb6600)  
+![TB6600-Stepper-Motor-Driver-Module](https://github.com/rusk911/coil_winder_esp32/blob/main/images/TB6600-Stepper-Motor-Driver-Module.jpg?raw=true)
 7. A button for start/stop winding.
 8. Any old PC Power supply with 5V and 12V for electronic part and small DVD motor
 9. Power supply for main motor 24-32V
